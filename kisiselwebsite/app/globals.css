@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+/* 12 Kolonlu Grid Sistemi */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 100px);
+  column-gap: 15px;
+  max-width: 1335px; /* 12 x 100 + 11 x 15 */
+  margin: 0 auto; /* Ortalamak için */
+  padding: 0 15px; /* Ekran daralırsa boşluklar korunsun */
+  box-sizing: border-box;
+}
+
+/* Responsive grid ayarları */
+@media (max-width: 1366px) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 100%;
+  }
+}
+
+/* Blob animasyonları için stiller */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --toggle-bg: #f79f22;
+  --toggle-circle: #ffffff;
+  --footer-bg: #f5f5f5;
+  --slider-bg: #f79f22;
+  
+  /* Yeni CSS değişkenleri */
+  --bg-color: #ffffff;
+  --text-color: #374151;
+  --bg-secondary: #f9fafb;
+  --border-color: #e5e7eb;
+  --toggle-bg: #e5e7eb;
+  --hover-color: #3b82f6;
+}
+
+/* Tema deu011fiu015fkenleri */
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #2F2E2E;
+    --foreground: #ffffff;
+    --toggle-bg: #000014;
+    --toggle-circle: #ffffff;
+    --footer-bg: #696969;
+    --slider-bg: #000000;
+  }
+}
+
+/* Dark mode sınıfı etkinken uygulanacak stiller */
+html.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --toggle-bg: #000014;
+  --toggle-circle: #ffffff;
+  --footer-bg: #696969;
+  --slider-bg: #000000;
+  color-scheme: dark;
+  
+  /* Tüm renkler tersine çevriliyor */
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --bg-secondary: #1f1f1f;
+  --border-color: #333333;
+  --hover-color: #60a5fa;
+}
+
+/* Dark mode için tüm yazıları beyaz yapma */
+html.dark, html.dark * {
+  color: #ffffff;
+}
+
+/* Dark mode için renk tersine çevirme kuralları */
+html.dark, html.dark * {
+  color: #ffffff;
+}
+
+/* Dark mode'da beyaz alanlar siyah, siyah alanlar beyaz olacak */
+html.dark .bg-white {
+  background-color: #000000 !important;
+}
+
+html.dark .bg-black {
+  background-color: #ffffff !important;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #1a1a1a !important;
+}
+
+html.dark .bg-gray-200 {
+  background-color: #222222 !important;
+}
+
+html.dark .bg-gray-300 {
+  background-color: #333333 !important;
+}
+
+html.dark .text-black {
+  color: #ffffff !important;
+}
+
+html.dark .text-white {
+  color: #000000 !important;
+}
+
+/* Görsellere dokunma */
+html.dark img {
+  filter: none !important;
+}
+
+html.dark svg {
+  filter: none !important;
+}
+
+/* Font Awesome ikonlaru0131nu0131 koruma */
+html.dark i {
+  filter: none !important;
+}
+
+/* Toggle slider stilleri */
+.toggle-slider {
+  background-color: var(--toggle-bg);
+  transition: background-color 0.2s;
+}
+
+.toggle-slider:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+input:checked + .toggle-slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .toggle-slider:after {
+  transform: translateX(20px);
+}
+
+/* Geçişli animasyonlar */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
